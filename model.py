@@ -46,8 +46,10 @@ def normalize_text(text: str) -> str:
     collapsed = " ".join(normalized.split())
     return collapsed
 
-# Step 5 - make_document (not yet solved)
-# TODO: implement
+# Step 5 - make_document
+def make_document(text, source, title):
+    # TODO: wrap text with source and title metadata into a document dict.
+    return {'text': f"{text}", 'source' : f'{source}' , 'title' : f'{title}'}
 
 # Step 6 - chunk_fixed_size (not yet solved)
 # TODO: implement
