@@ -31,11 +31,20 @@ def load_text_directory(directory):
             contents.append(content)
     return contents
 
-# Step 3 - extract_text_from_html (not yet solved)
-# TODO: implement
+# Step 3 - extract_text_from_html
+import re
+def extract_text_from_html(html):
+    # TODO: strip HTML tags and return only the visible text content
+    text = re.sub(r'<[^>]+>','',html)
+    return text
 
-# Step 4 - normalize_text (not yet solved)
-# TODO: implement
+# Step 4 - normalize_text
+import unicodedata
+
+def normalize_text(text: str) -> str:
+    normalized = unicodedata.normalize("NFKC", text)
+    collapsed = " ".join(normalized.split())
+    return collapsed
 
 # Step 5 - make_document (not yet solved)
 # TODO: implement
