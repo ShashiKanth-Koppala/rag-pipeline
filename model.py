@@ -56,8 +56,17 @@ def chunk_fixed_size(text, chunk_size):
     # TODO: split text into consecutive non-overlapping chunks of length chunk_size
     return [text[i:i+chunk_size] for i in range(0,len(text), chunk_size)]
 
-# Step 7 - chunk_by_tokens (not yet solved)
-# TODO: implement
+# Step 7 - chunk_by_tokens
+def chunk_by_tokens(text, tokenizer, max_tokens):
+    # TODO: split text into chunks of at most max_tokens token ids using the tokenizer
+    token_ids = tokenizer.encode(text)
+    chunks = []
+
+    for i in range(0,len(token_ids),max_tokens):
+        chunk_ids = token_ids[i:i+max_tokens]
+        chunks.append(tokenizer.decode(chunk_ids))
+
+    return chunks
 
 # Step 8 - chunk_by_sentences (not yet solved)
 # TODO: implement
