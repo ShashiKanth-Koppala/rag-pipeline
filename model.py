@@ -110,8 +110,14 @@ def chunk_with_overlap(text, chunk_size, overlap):
 
     return chunks
 
-# Step 10 - attach_chunk_metadata (not yet solved)
-# TODO: implement
+# Step 10 - attach_chunk_metadata
+def attach_chunk_metadata(chunks, source):
+    # TODO: wrap each chunk string with source, position, and chunk_id metadata.
+    metada = []
+
+    for i in range(len(chunks)):
+        metada.append({ 'text': chunks[i], 'source': source, 'position' : i, 'chunk_id' : f"{source}::{i}" })
+    return metada
 
 # Step 11 - load_embedding_model (not yet solved)
 # TODO: implement
