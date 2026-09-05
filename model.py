@@ -133,8 +133,33 @@ def embed_text(model, text):
 
     return embeddings
 
-# Step 13 - embed_chunks (not yet solved)
-# TODO: implement
+# Step 13 - embed_chunks
+import numpy as np
+
+def embed_chunks(model, chunks, batch_size=32):
+    """Embed chunks into a 2D float32 matrix of shape (n_chunks, d)."""
+    
+    if not chunks:
+        return np.empty((0, 384), dtype=np.float32)
+    # Convert chunk dicts to strings
+    texts = [
+        chunk["text"] if isinstance(chunk, dict) else chunk
+        for chunk in chunks
+    ]
+
+    embeddings = []
+
+    # Process in batches
+    for i in range(0, len(texts), batch_size):
+        batch = texts[i:i + batch_size]
+
+        # Embed the current batch
+        batch_embeddings = model.encode(batch)
+
+        embeddings.append(batch_embeddings)
+
+    # Combine all batches into one matrix
+    return np.vstack(embeddings).astype(np.float32)
 
 # Step 14 - l2_normalize (not yet solved)
 # TODO: implement
