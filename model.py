@@ -209,8 +209,15 @@ def cosine_similarity_search(query_vector, chunk_matrix):
 
     return sim
 
-# Step 17 - top_k_indices (not yet solved)
-# TODO: implement
+# Step 17 - top_k_indices
+import numpy as np
+
+def top_k_indices(scores, k):
+    """Return indices of the k highest scores, descending.
+    Ties are broken by original position (earlier index wins)."""
+    scores = np.asarray(scores)
+    order = np.argsort(-scores, kind='stable')
+    return order[:k]
 
 # Step 18 - top_k_chunks (not yet solved)
 # TODO: implement
