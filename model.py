@@ -219,8 +219,14 @@ def top_k_indices(scores, k):
     order = np.argsort(-scores, kind='stable')
     return order[:k]
 
-# Step 18 - top_k_chunks (not yet solved)
-# TODO: implement
+# Step 18 - top_k_chunks
+import numpy as np
+
+def top_k_chunks(scores, chunks, k):
+    scores = np.asarray(scores).tolist()  # np.float64 -> plain float
+    pairs = list(zip(chunks, scores))
+    pairs.sort(key=lambda x: -x[1])
+    return pairs[:k]
 
 # Step 19 - retrieve (not yet solved)
 # TODO: implement
